@@ -84,4 +84,8 @@ class Dcapp(CMakePackage):
         args.append(self.define_from_variant("DCA_HAVE_HIP", "hip"))
         args.append(self.define("DCA_POINT_GROUP", spec.variants["point_group"].value))
         args.append(self.define("DCA_LATTICE", spec.variants["lattice"].value))
+        
+        if spec.satisfies("+tests_fast") or spec.satisfies("+tests_extensive"):
+            args.append(self.define("TEST_RUNNER", "mpiexec"))
+            
         return args
