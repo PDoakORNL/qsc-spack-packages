@@ -38,6 +38,33 @@ class Dcapp(CMakePackage):
     variant("hip", default=False, description="enable HIP support")
     variant("tests_fast", default=False, description="Build DCA++'s fast tests.")
     variant("tests_extensive", default=False, description="Build DCA++'s extensive tests.")
+    variant(
+        "point_group",
+        default="D4",
+        values=("C6", "D4", "no_symmetry<2>", "no_symmetry<3>"),
+        description="Point group symmetry",
+    )
+    variant(
+        "lattice",
+        default="square",
+        values=(
+            "bilayer",
+            "square",
+            "triangular",
+            "Kagome",
+            "Plaquette",
+            "hund",
+            "twoband_Cu",
+            "threeband",
+            "Rashba_Hubbard",
+            "Moire_Hubbard",
+            "FeAs",
+            "material_NiO",
+            "material_FeSn",
+            "La3Ni2O7_bilayer",
+        ),
+        description="Lattice type",
+    )
 
     with when("+cuda"):
         depends_on("cuda@12:12.9")
@@ -55,4 +82,6 @@ class Dcapp(CMakePackage):
         args.append(self.define_from_variant("DCA_WITH_TESTS_EXTENSIVE", "tests_extensive"))
         args.append(self.define_from_variant("DCA_HAVE_CUDA", "cuda"))
         args.append(self.define_from_variant("DCA_HAVE_HIP", "hip"))
+        args.append(self.define("DCA_POINT_GROUP", spec.variants["point_group"].value))
+        args.append(self.define("DCA_LATTICE", spec.variants["lattice"].value))
         return args
