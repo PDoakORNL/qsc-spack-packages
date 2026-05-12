@@ -40,7 +40,7 @@ class Dcapp(CMakePackage):
     variant("tests_extensive", default=False, description="Build DCA++'s extensive tests.")
     variant(
         "point_group",
-        default="D4",
+        default="no_symmetry<2>",
         values=("C6", "D4", "no_symmetry<2>", "no_symmetry<3>"),
         description="Point group symmetry",
     )
