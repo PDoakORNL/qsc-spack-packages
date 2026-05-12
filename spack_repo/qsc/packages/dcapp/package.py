@@ -35,7 +35,9 @@ class Dcapp(CMakePackage):
     depends_on("hdf5+cxx")
 
     variant("cuda", default=False, description="enable CUDA support")
-    variant("hip", default=False, description="eneable HIP support")
+    variant("hip", default=False, description="enable HIP support")
+    variant("tests_fast", default=False, description="Build DCA++'s fast tests.")
+    variant("tests_extensive", default=False, description="Build DCA++'s extensive tests.")
 
     with when("+cuda"):
         depends_on("cuda@12:12.9")
@@ -45,3 +47,12 @@ class Dcapp(CMakePackage):
 
     with when("+cuda" or "+hip"):
         depends_on("magma@2.10:")
+
+    def cmake_args(self):
+        spec = self.spec
+        args = []
+        args.append(self.define_from_variant("DCA_WITH_TESTS_FAST", "tests_fast"))
+        args.append(self.define_from_variant("DCA_WITH_TESTS_EXTENSIVE", "tests_extensive"))
+        args.append(self.define_from_variant("DCA_HAVE_CUDA", "cuda"))
+        args.append(self.define_from_variant("DCA_HAVE_HIP", "hip"))
+        return args
