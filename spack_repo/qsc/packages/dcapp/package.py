@@ -86,7 +86,10 @@ class Dcapp(CMakePackage):
             args.append(self.define("DCA_POINT_GROUP", spec.variants["point_group"].value))
         else:
             args.append(self.define("DCA_POINT_GROUP", "no_symmetry<2>"))
-        args.append(self.define("DCA_LATTICE", spec.variants["lattice"].value))
+        if "lattice" in spec.variants:
+            args.append(self.define("DCA_LATTICE", spec.variants["lattice"].value))
+        else:
+            args.append(self.define("DCA_LATTICE", "square"))
         
         if spec.satisfies("+tests_fast") or spec.satisfies("+tests_extensive"):
             args.append(self.define("TEST_RUNNER", "mpiexec"))
