@@ -22,6 +22,7 @@ class Dcapp(CMakePackage):
     license("BSD-3-Clause", checked_by="PDoakORNL")
 
     version("2.0.0-alpha", sha256="c6c7fd3bb8c49749344f439abfaaa62177038306d1526517befbb17108083280")
+    version("master", branch="master", get_full_repo=True)
 
     def url_for_version(self, version):
         url = "https://github.com/CompFUSE/DCA/archive/refs/tags/v{0}.tar.gz"
