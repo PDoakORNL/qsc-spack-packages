@@ -9,12 +9,8 @@ from spack.package import *
 class Dcapp(CMakePackage):
     """The DCA++ code provides a state of the art implementation of
     the dynamical cluster approximation (DCA) and its DCA++ extension.
-    High scalability and portable performance allow to exploit today's leadership computing systems."""
-
-    homepage = "https://github.com/CompFUSE/DCA"
-    url = "https://github.com/CompFUSE/DCA/archive/refs/tags/v2.0.0-alpha.tar.gz"
-
-    maintainers("PDoakORNL")
+    """
+    default_version = "v2.0.0-alpha2"
 
     # FIXME: Add the SPDX identifier of the project's license below.
     # See https://spdx.org/licenses/ for a list. Upon manually verifying
