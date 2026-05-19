@@ -21,6 +21,7 @@ class Dcapp(CMakePackage):
     # the license, set checked_by to your Github username.
     license("BSD-3-Clause", checked_by="PDoakORNL")
 
+    version("2.0.0-alpha2", sha256="abb4f282ce49f8b68c0c96d76ba99e03a02a7a9b96be3ad90e53df28dcb9dfad")
     version("2.0.0-alpha", sha256="c6c7fd3bb8c49749344f439abfaaa62177038306d1526517befbb17108083280")
     version("master", branch="master", get_full_repo=True)
 
@@ -91,8 +92,8 @@ class Dcapp(CMakePackage):
             args.append(self.define("DCA_LATTICE", spec.variants["lattice"].value))
         else:
             args.append(self.define("DCA_LATTICE", "square"))
-        
+
         if spec.satisfies("+tests_fast") or spec.satisfies("+tests_extensive"):
             args.append(self.define("TEST_RUNNER", "mpiexec"))
-            
+
         return args
