@@ -9,24 +9,28 @@ from spack.package import *
 class Dcapp(CMakePackage):
     """The DCA++ code provides a state of the art implementation of
     the dynamical cluster approximation (DCA) and its DCA++ extension.
+    High scalability and portable performance allow to exploit today's
+    leadership computing systems.
     """
+    # homepage = "https://github.com/CompFUSE/DCA"
+    # url = "https://github.com/CompFUSE/DCA/archive/refs/tags/v2.0.0-alpha3.tar.gz"
+
+    maintainers("PDoakORNL")
+
     default_version = "2.0.0-alpha3"
-
-    # FIXME: Add the SPDX identifier of the project's license below.
-    # See https://spdx.org/licenses/ for a list. Upon manually verifying
-    # the license, set checked_by to your Github username.
-    license("BSD-3-Clause", checked_by="PDoakORNL")
-
-    version("2.0.0-alpha3", sha256="82cadf6cb17bb330fafe899ca54948acdeecc9651f37f8fd70595e3bf88a49c9")
-    version("master", branch="master", get_full_repo=True)
 
     def url_for_version(self, version):
         url = "https://github.com/CompFUSE/DCA/archive/refs/tags/v{0}.tar.gz"
         return url.format(version)
 
+    license("BSD-3-Clause", checked_by="PDoakORNL")
+
+    version("2.0.0-alpha3", sha256="82cadf6cb17bb330fafe899ca54948acdeecc9651f37f8fd70595e3bf88a49c9")
+    version("master", branch="master", get_full_repo=True)
+
     depends_on("cmake", type="build")
     depends_on("mpi")
-    depends_on("llvm@21.0.0:", type="build")
+    depends_on("llvm@21.0.0:", type="build,link")
     depends_on("fftw")
     depends_on("openblas threads=none")
     depends_on("hdf5+cxx")
