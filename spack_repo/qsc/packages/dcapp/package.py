@@ -12,16 +12,12 @@ class Dcapp(CMakePackage):
     High scalability and portable performance allow to exploit today's
     leadership computing systems.
     """
-    # homepage = "https://github.com/CompFUSE/DCA"
-    # url = "https://github.com/CompFUSE/DCA/archive/refs/tags/v2.0.0-alpha3.tar.gz"
+    homepage = "https://github.com/CompFUSE/DCA"
+    url = "https://github.com/CompFUSE/DCA/archive/refs/tags/v2.0.0-alpha3.tar.gz"
 
     maintainers("PDoakORNL")
 
     default_version = "2.0.0-alpha3"
-
-    def url_for_version(self, version):
-        url = "https://github.com/CompFUSE/DCA/archive/refs/tags/v{0}.tar.gz"
-        return url.format(version)
 
     license("BSD-3-Clause", checked_by="PDoakORNL")
 
