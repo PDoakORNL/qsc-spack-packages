@@ -18,8 +18,6 @@ class Dcapp(CMakePackage):
     license("BSD-3-Clause", checked_by="PDoakORNL")
 
     version("2.0.0-alpha3", sha256="82cadf6cb17bb330fafe899ca54948acdeecc9651f37f8fd70595e3bf88a49c9")
-    version("2.0.0-alpha2", sha256="abb4f282ce49f8b68c0c96d76ba99e03a02a7a9b96be3ad90e53df28dcb9dfad")
-    version("2.0.0-alpha", sha256="c6c7fd3bb8c49749344f439abfaaa62177038306d1526517befbb17108083280")
     version("master", branch="master", get_full_repo=True)
 
     def url_for_version(self, version):
