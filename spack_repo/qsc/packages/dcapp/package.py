@@ -10,7 +10,7 @@ class Dcapp(CMakePackage):
     """The DCA++ code provides a state of the art implementation of
     the dynamical cluster approximation (DCA) and its DCA++ extension.
     """
-    default_version = "v2.0.0-alpha3"
+    default_version = "2.0.0-alpha3"
 
     # FIXME: Add the SPDX identifier of the project's license below.
     # See https://spdx.org/licenses/ for a list. Upon manually verifying
