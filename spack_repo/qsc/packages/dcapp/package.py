@@ -30,7 +30,7 @@ class Dcapp(CMakePackage):
 
     depends_on("cmake", type="build")
     depends_on("mpi")
-    depends_on("llvm@21.0.0:", type="build,link")
+    depends_on("llvm@21.0.0:")
     depends_on("fftw")
     depends_on("openblas threads=none")
     depends_on("hdf5+cxx")
